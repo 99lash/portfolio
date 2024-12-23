@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .debug {
+    border: 1px solid red;
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fade-in-up 1s ease-out forwards;
+  }
+
+}
+
+.bento-box {
+  @apply border border-brand-border rounded-lg p-4 shadow-sm;
+}
+
+@layer base{
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  } 
+}
+
+:root {
+  --ff-default: Roboto, sans-serif, arial;
+
+  --fw-thin: 100;
+  --fw-lighthin: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  --fs-300: 0.8125rem;    /* 13px */
+  --fs-400: 0.875rem;     /* 14px */
+  --fs-500: 0.9375rem;    /* 15px */
+  --fs-600: 1rem;         /* 16px */
+  --fs-700: 1.875rem;     /* 30px */
+  --fs-800: 2rem;         /* 32px */
+  --fs-900: 2.5rem;       /* 40px */
+
+  --clr-background: rgb(246, 246, 246);
+  --clr-foreground: rgba(17, 16, 16, 0.938);
+  --clr-border: #eaeaea;
+}
