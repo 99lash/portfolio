@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: ['./src/**/*.{html,js}', './index.html'],
+  darkMode: 'class',
   theme: {
     screens: {
       sm: '480px',
@@ -25,9 +27,6 @@ module.exports = {
           'foreground': 'var(--clr-foreground)',
           'background': 'var(--clr-background)',
         }
-      },
-      borderRadius: {
-        '4xl': '2rem',
       },
       fontFamily: {
         default: 'var(--ff-default)',
