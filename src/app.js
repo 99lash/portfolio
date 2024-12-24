@@ -208,7 +208,7 @@ function renderContent() {
           </p>
           <p class="mb-2 font-normal text-sm sm:text-base">Bachelor of Science in Computer Science</p>
           <div class="flex items-center gap-2">
-            <a href="https://99lash.github.io/CCS-107-WEB-SYSTEM/Practical-exam/" target="_blank"
+            <a href="https://99lash.github.io/CCS-107/Practical-exam/" target="_blank"
               class="min-w-24 flex items-center gap-1 rounded-md border border-black bg-brand-foreground px-2 py-1.5 text-xs text-brand-light dark:border-brand-borderDM dark:bg-brand-light dark:text-brand-black">
               <svg width="16px" height="16px" class="hidden" id="downloadIconLight" viewBox="0 0 24.00 24.00"
                 fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.00024000000000000003">
@@ -647,7 +647,7 @@ sectionBody.innerHTML = `
 
             <div
               class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
-              <a href="https://99lash.github.io/CCS-107-WEB-SYSTEM/Slot-Machine/" target="_blank">
+              <a href="https://99lash.github.io/CCS-107/Slot-Machine/" target="_blank">
                 <h3 class="font-semibold">Slot Machine</h3>
                 <p class="text-xs md:text-md">Final examination project</p>
                 <div class="flex flex-row text-xs gap-2 flex-wrap mt-2">
@@ -660,7 +660,7 @@ sectionBody.innerHTML = `
 
             <div
               class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
-              <a href="https://99lash.github.io/CCS-107-WEB-SYSTEM/Activity2/" target="_blank">
+              <a href="https://99lash.github.io/CCS-107/Activity2/" target="_blank">
                 <h3 class="font-semibold">Gantsilyo Yarn</h3>
                 <p class="text-xs md:text-md">E-commerce site</p>
                 <div class="flex flex-row text-xs gap-2 flex-wrap mt-2">
