@@ -25,7 +25,7 @@
   @keyframes fade-in-up {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
     
     100% {
@@ -54,7 +54,7 @@
   --fs-900: 2.5rem;       /* 40px */
 
   --clr-background: rgb(246, 246, 246);
-  --clr-foreground: rgba(17, 16, 16, 0.938);
+  --clr-foreground: rgba(0, 0, 0, 0.938);
   --clr-border: #d7d7d7d2;
-  --clr-border-dm: #545454;
+  --clr-border-dm: #1f1f1fd4;
 }
