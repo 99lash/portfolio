@@ -20,6 +20,7 @@ module.exports = {
           'light': 'var(--clr-background)',
           'black': 'var(--clr-foreground)',
           'border': 'var(--clr-border)',
+          'borderDM': 'var(--clr-border-dm)',
         }
       },
       backgroundColor: {

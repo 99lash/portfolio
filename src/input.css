@@ -14,12 +14,12 @@
     opacity: 0;
     animation: fade-in-up 1s ease-out forwards;
   }
-
 }
 
 .bento-box {
-  @apply border border-brand-border rounded-lg p-4 shadow-sm;
+  @apply rounded-lg p-4 shadow-sm;
 }
+
 
 @layer base{
   @keyframes fade-in-up {
@@ -55,5 +55,6 @@
 
   --clr-background: rgb(246, 246, 246);
   --clr-foreground: rgba(17, 16, 16, 0.938);
-  --clr-border: #eaeaea;
+  --clr-border: #d7d7d7d2;
+  --clr-border-dm: #545454;
 }
