@@ -1,0 +1,72 @@
+{
+  "firstName": "John Asher",
+  "lastName": "Manit",
+  "address": "Manila, Phillippines",
+  "resumeLink": "https://99lash.github.io/CCS-107/Practical-exam/",
+  "emailAddress": "asherjohn48@gmail.com",
+  "bio": "I'm a 2nd-year student from University of Caloocan City - Main Campus, major in BS in Computer Science. I am passionate about technology and constantly exploring the world of software development. My goal is to become a full-stack developer or software engineer, where I can build innovative solutions and contribute to meaningful projects.\n\nI'm eager to expand my knowledge in Programming, Web Development, App Development, AI, and System Design, and I strive to turn my passion into a successful career in the tech industry.",
+  "techStacks": [
+    "JavaScript",
+    "Microsoft SQL",
+    "Node.js",
+    "Express.js",
+    "Tailwind",
+    "Java",
+    "Git"
+  ],
+  "socialLinks": {
+    "github": "https://github.com/99lash",
+    "linkedIn": "https://www.linkedin.com/in/john-asher-manit-7035b8264/",
+    "instagram": "https://www.instagram.com/xshr.21"
+  },
+  "projects": [
+    {
+      "title": "RBMS (console)",
+      "description": "Borrowing management system for University department",
+      "link": "https://github.com/99lash/Resources-Borrowing-Management-System",
+      "techUsed": [
+        "Java",
+        "CSV"
+      ]
+    },
+    {
+      "title": "Online-Dice",
+      "description": "Rigged site cloned from online-dice.com",
+      "link": "https://online-diceeeee.vercel.app/index.html",
+      "techUsed": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TamperMonkey"
+      ]
+    },
+    {
+      "title": "Slot Machine",
+      "description": "Final Examination Project",
+      "link": "https://99lash.github.io/CCS-107/Slot-Machine/",
+      "techUsed": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "title": "Ganstilyo Yarn",
+      "description": "E-commerce site",
+      "link": "https://99lash.github.io/CCS-107/Activity2/",
+      "techUsed": [
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "title": "MATH WHiz",
+      "description": "A basic math game in terminal",
+      "link": "https://github.com/99lash/Math-WHiz",
+      "techUsed": [
+        "C",
+        "TURBO C"
+      ]
+    }
+  ]
+}

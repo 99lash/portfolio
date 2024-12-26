@@ -1,5 +1,6 @@
 'use strict';
 
+
 renderContent();
 
 const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -69,7 +70,7 @@ if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localS
 
 }
 
-var themeToggleBtn = document.getElementById('theme-toggle');
+let themeToggleBtn = document.getElementById('theme-toggle');
 
 themeToggleBtn.addEventListener('click', function () {
 
@@ -130,6 +131,52 @@ themeToggleBtn.addEventListener('click', function () {
 });
 
 
+async function getDataFromJSON() {
+  let res = await fetch('./src/data.json');
+  return await res.json();
+}
+
+
+async function populateData() {
+  const data = await getDataFromJSON(); 
+  const {firstName, lastName, address, bio, techStacks, projects} = data;
+
+  // FULL NAME
+  document.getElementById('fullName').innerHTML = `${firstName} ${lastName}`;
+  
+  // ADDRESS
+  document.getElementById('address').innerText = address;
+
+  // BIO
+  document.getElementById('description').innerText = bio; 
+
+  // TECH STACK
+  techStacks.forEach(techStack => {
+    document.getElementById('techStack').innerHTML += `<span class="border border-b-brand-border rounded-md px-2">${techStack}</span>`;
+  })
+
+  // PROJECTS
+  projects.forEach((project, index) => {
+    const {title, description, link, techUsed} = project;
+    const uniqueId = ++index;
+    if (uniqueId > 4) return;
+    document.getElementById('projects').innerHTML += `
+      <div
+        class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
+        <a href="${link}" target="_blank">
+          <h3 class="font-semibold">${title}</h3>
+          <p class="text-xs md:text-md">${description}</p>
+          <div class="flex flex-row text-xs gap-2 flex-wrap mt-2" id="techUsed-${uniqueId}">
+          </div>
+        </a>
+      </div>`;
+      // TECH USED IN PROJECTS
+      techUsed.forEach(tech => {
+        document.getElementById(`techUsed-${uniqueId}`).innerHTML += `<span class="border border-b-brand-border rounded-md px-2">${tech}</span>`
+      });
+  });
+}
+
 function renderContent() {
   const sectionHeader = document.getElementById('section-header');
   const sectionBody = document.getElementById('section-body');
@@ -141,7 +188,7 @@ function renderContent() {
           class=" w-28 h-28 object-cover rounded-md sm:w-40 sm:h-40 ">
         <div class="min-w-[280pxpx] w-[100%] sm: flex-1">
           <div class="flex items-center justify-between">
-            <h1 class="text-xl font-bold mb-2 sm:text-3xl">John Asher Manit</h1>
+            <h1 class="text-xl font-bold mb-2 sm:text-3xl" id="fullName"></h1>
             <button id="theme-toggle" type="button"
               class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full text-sm p-2.5 transition-all 1s">
               <div class="hidden" id="theme-toggle-dark-icon">
@@ -171,7 +218,8 @@ function renderContent() {
 
           </div>
           <p class="text-xs flex items-center mb-2 gap-1">
-            <svg width="14px" height="14px" class="hidden" id="locationIconDark" viewBox="0 0 24 24" fill="none"
+            
+          <svg width="14px" height="14px" class="hidden" id="locationIconDark" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -204,7 +252,7 @@ function renderContent() {
                 </g>
               </g>
             </svg>
-            <span class="text-xs">Manila, Philippines</span>
+            <span class="text-xs" id="address">Manila, Philippines</span>
           </p>
           <p class="mb-2 font-normal text-sm sm:text-base">Bachelor of Science in Computer Science</p>
           <div class="flex items-center gap-2">
@@ -239,7 +287,7 @@ function renderContent() {
                 View Resume
               </span>
             </a>
-            <a href="mailto:asherjohn48@gmail.com"
+            <a href="mailto:asherjohn48@gmail.com" 
               class="min-w-16 flex items-center gap-1 rounded-md border border-black px-2 py-1.5 text-xs dark:border-brand-borderDM">
               <svg width="16px" height="16px" class="hidden" id="mailIconDark" viewBox="-0.5 0 25 25" fill="none"
                 xmlns="http://www.w3.org/2000/svg" stroke="#000000">
@@ -281,9 +329,9 @@ function renderContent() {
           </div>
         </div>
       </div>
-`;
+  `;
 
-sectionBody.innerHTML = `
+  sectionBody.innerHTML = `
  <div class="grid gap-2.5 grid-cols-1 md:grid-cols-6 md:grid-rows-6">
 
         <!-- ABOUT -->
@@ -380,16 +428,7 @@ sectionBody.innerHTML = `
             </svg>
             <h3 class="text-xl">About</h3>
           </div>
-          <p>A 2nd-year student from University of Caloocan City - Main Campus, majoring
-            in <span class="font-semibold">BS in Computer Science</span>. I am passionate about technology and
-            constantly
-            exploring the world of software development. My goal is to become a full-stack developer or software
-            engineer, where I can build innovative solutions and contribute to meaningful projects.</p>
-          <br>
-          <p>
-            I'm eager to expand my knowledge in programming, web development, app development, and system design, and
-            I strive to turn my passion into a successful career in the tech industry.
-          </p>
+          <p id="description"></p>
         </div>
         <!-- TECH STACk -->
         <div
@@ -418,14 +457,8 @@ sectionBody.innerHTML = `
             <h3 class="text-xl font-semibold">Tech Stack</h3>
           </div>
 
-          <div class="flex flex-row text-xs gap-2 flex-wrap">
-            <span class="border border-b-brand-border rounded-md px-2">JavaScript</span>
-            <span class="border border-b-brand-border rounded-md px-2">Microsoft SQL</span>
-            <span class="border border-b-brand-border rounded-md px-2">Node.js</span>
-            <span class="border border-b-brand-border rounded-md px-2">Express.js</span>
-            <span class="border border-b-brand-border rounded-md px-2">Tailwind</span>
-            <span class="border border-b-brand-border rounded-md px-2">Java</span>
-            <span class="border border-b-brand-border rounded-md px-2">Git</span>
+          <div class="flex flex-row text-xs gap-2 flex-wrap" id="techStack">
+           
           </div>
         </div>
         <!-- CONNECT -->
@@ -596,7 +629,7 @@ sectionBody.innerHTML = `
               </svg>
               <h3 class="text-xl font-semibold">Recent Projects</h3>
             </div>
-            <a href="" class="text-xs flex">View All
+            <a href="./public/projects.html" class="text-xs flex">View All
               <svg width="16px" height="16px" class="hidden" id="arrowIconDark" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -617,62 +650,13 @@ sectionBody.innerHTML = `
               </svg>
             </a>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2.5 ">
-            <div
-              class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
-              <a href="https://github.com/99lash/Resources-Borrowing-Management-System" target="_blank">
-                <h3 class="font-semibold">RBMS (console)</h3>
-                <p class="text-xs md:text-md">Borrowing management system for University department</p>
-                <div class="flex flex-row text-xs gap-2 flex-wrap mt-2">
-                  <span class="border border-b-brand-border rounded-md px-2">Java</span>
-                  <span class="border border-b-brand-border rounded-md px-2">CSV</span>
-                </div>
-              </a>
-            </div>
-
-            <div
-              class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
-              <a href="https://online-diceeeee.vercel.app/index.html" target="_blank">
-                <h3 class="font-semibold">Online-dice</h3>
-                <p class="text-xs md:text-md">Cloned site with rigged dice</p>
-                <div class="flex flex-row text-xs gap-2 flex-wrap mt-2">
-                  <span class="border border-b-brand-border rounded-md px-2">HTML</span>
-                  <span class="border border-b-brand-border rounded-md px-2">CSS</span>
-                  <span class="border border-b-brand-border rounded-md px-2">JavaScript</span>
-                  <span class="border border-b-brand-border rounded-md px-2">TamperMonkey</span>
-                </div>
-              </a>
-            </div>
-
-            <div
-              class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
-              <a href="https://99lash.github.io/CCS-107/Slot-Machine/" target="_blank">
-                <h3 class="font-semibold">Slot Machine</h3>
-                <p class="text-xs md:text-md">Final examination project</p>
-                <div class="flex flex-row text-xs gap-2 flex-wrap mt-2">
-                  <span class="border border-b-brand-border rounded-md px-2">HTML</span>
-                  <span class="border border-b-brand-border rounded-md px-2">CSS</span>
-                  <span class="border border-b-brand-border rounded-md px-2">JavaScript</span>
-                </div>
-              </a>
-            </div>
-
-            <div
-              class="bento-box border border-b-brand-border dark:border dark:border-brand-borderDM col-span-2 row-span-1 hover:scale-y-105 shadow-lg">
-              <a href="https://99lash.github.io/CCS-107/Activity2/" target="_blank">
-                <h3 class="font-semibold">Gantsilyo Yarn</h3>
-                <p class="text-xs md:text-md">E-commerce site</p>
-                <div class="flex flex-row text-xs gap-2 flex-wrap mt-2">
-                  <span class="border border-b-brand-border rounded-md px-2">HTML</span>
-                  <span class="border border-b-brand-border rounded-md px-2">CSS</span>
-                </div>
-              </a>
-            </div>
-
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2.5" id="projects">
+            
           </div>
         </div>
 
       </div>
-`;
+  `;
+  populateData();
 }

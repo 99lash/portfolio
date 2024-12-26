@@ -17,7 +17,7 @@
 }
 
 .bento-box {
-  @apply rounded-lg p-4 shadow-sm;
+  @apply rounded-2xl p-4 shadow-sm;
 }
 
 
