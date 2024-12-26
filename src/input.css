@@ -20,6 +20,10 @@
   @apply rounded-2xl p-4 shadow-sm;
 }
 
+.tag {
+  @apply border border-brand-borderDM rounded-md px-2 dark:border dark:border-brand-border;
+}
+
 
 @layer base{
   @keyframes fade-in-up {
